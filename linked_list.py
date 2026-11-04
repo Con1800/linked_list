@@ -16,5 +16,32 @@ class linkedList:
     def __len__(self):
         pass
 
-    def __append__(self):
+    def append(self, value):
+        if self.head is None:
+            self.head = Node(value)
+        else:
+            last = self.head
+            while last.next:
+                last = last.next
+            last.next = Node(value)
+
+    def __prepend(self, value):
         pass
+
+    def insert(self, value, index):
+        pass
+
+    def delete(self, value):
+        pass
+
+    def pop(self, index):
+        pass
+
+    def get(self, index):
+        pass
+
+    def print(self):
+        pass
+
+if __name__ == "__main__":
+    pass
