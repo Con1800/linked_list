@@ -5,17 +5,41 @@ class HashMap:
         self.buckets = [[] for _ in range(capacity)]
 
     def __len__(self):
-        pass
+        return self.size
 
     def __contains__(self, key):
-        pass
+        index = self._hash_function(key)
+        bucket = self.buckets[index]
+
+        for k, v in bucket:
+            if k == key:
+                return True
+
+        return False
+    
 
 
     def put(self, key, value):
-        pass
+        index = self._hash_function(key)
+        bucket = self.buckets[index]
+
+        for i, (k, v) in enumerate(bucket):
+            if k == key:
+                bucket[i] = (key, value)
+                break
+        else:
+            bucket.append((key, value))
+            self.size += 1
 
     def get(self, key):
-        pass
+        index = self._hash_function(key)
+        bucket = self.buckets[index]
+
+        for k, v in bucket:
+            if k == key:
+                return v
+
+        raise KeyError("Key not found")
 
     def remove(self, key):
         pass
@@ -31,4 +55,8 @@ class HashMap:
         pass
 
     def _hash_function(self, key):
-        pass
+        key_string = str(key)
+        hash_result = 0
+
+        for c in key_string:
+            hash_result = (hash_result * 31 + ord(c)) % self.capacity
