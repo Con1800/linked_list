@@ -14,6 +14,7 @@ A Queue is a linear data structure that follows the First In, First Out (FIFO) p
 
 # Conclusion: Hash map (Data Structure)
 **Technical explanation: HashMap**
+
 **Hash map is very important data structure**
 A HashMap is a data structure that stores information in key-value pairs.
 
