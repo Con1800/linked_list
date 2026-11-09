@@ -95,8 +95,9 @@ if __name__ == "__main__":
     import matplotlib.pyplot as plt
 
     hash_map = HashMap(100)
+    # hash_map = HashMap(1000)
 
-    for _ in range(50000):
+    for _ in range(100000):
         hash_map.put(uuid.uuid4(), 'some_value')
 
     X = []

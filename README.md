@@ -13,12 +13,15 @@ Technical conclusion:
 A Queue is a linear data structure that follows the First In, First Out (FIFO) principle. Your implementation uses a singly linked list with front and rear pointers to efficiently manage insertion and removal.
 
 # Conclusion: Hash map (Data Structure)
-** Technical explanation: HashMap **
+**Technical explanation: HashMap**
+** Hash map is very important data structure
 A HashMap is a data structure that stores information in key-value pairs.
 
 Each piece of information has two parts:
 - Key: Used to identify or find the data.
 - Value: The actual data associated with that key.
+
+
 
 ** The Law of Large Numbers **
 The Law of Large Numbers is a statistical principle stating that as the number of independent observations or experiments increases, the sample average tends to converge toward the true expected value. In other words, collecting more observations generally makes the results more representative of the actual average or probability, provided the data meets the necessary statistical assumptions.
