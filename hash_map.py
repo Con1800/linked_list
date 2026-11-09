@@ -98,3 +98,5 @@ if __name__ == "__main__":
     hash_map.put('job', 'programmer')
 
     print(hash_map.items())
+
+    print(hash_map.buckets)
