@@ -91,12 +91,33 @@ class HashMap:
 
 
 if __name__ == "__main__":
-    hash_map = HashMap(32)
+    import uuid
+    import matplotlib.pyplot as plt
 
-    hash_map.put('name', 'mike')
-    hash_map.put('age', 30)
-    hash_map.put('job', 'programmer')
+    hash_map = HashMap(100)
 
-    print(hash_map.items())
+    for _ in range(50000):
+        hash_map.put(uuid.uuid4(), 'some_value')
 
-    print(hash_map.buckets)
+    X = []
+    y = []
+
+    for i, bucket in enumerate(hash_map.buckets):
+        X.append(i)
+        y.append(len(bucket))
+
+    plt.bar(X, y)
+    plt.show()
+
+    # hash_map = HashMap(32)
+
+    # hash_map.put('name', 'mike')
+    # hash_map.put('age', 30)
+    # hash_map.put('job', 'programmer')
+
+    # print(hash_map.items())
+
+    # print(hash_map.buckets)
+
+
+  
