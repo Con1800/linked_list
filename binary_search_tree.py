@@ -76,19 +76,76 @@ class BinarySearchTree:
                     current_node = current_node.right
 
     def delete(self, key):
-        pass
+        node = self.search(key)
+
+        if node is None:
+            raise ValueError('Node with this key does not exist')
+
+        self._delete(node)
 
     def traverse(self, order):
         pass
 
-    def _delete(self, key):
-        pass
+    def _delete(self, node):
+        # Node is leaf node
+        if node.left is None and node.right is None:
+            if node.parent is None:
+                self.root = None
+            else:
+                if node.parent.right == node:
+                    node.parent.right = None
+                else:
+                    node.parent.left = None
+                node.parent = None
+
+        elif node.left is None or node.right is None:
+            child_node = node.left if node.left is not None else node.right
+
+            if node.parent is None:
+                child_node.parent = None
+                self.root = child_node
+            else:
+                if node.parent.right == node:
+                    node.parent.right = child_node
+                else:
+                    node.parent.left = child_node
+                child_node.parent = node.parent
+
+            node.parent = node.left = node.right = None
+        else:
+            successor = self._successor(node)
+
+            node.key = successor.key
+            node.value = successor.value
+
+            self.delete(successor)
+
+        # Node has one child
+        # Node has two child
 
     def _successor(self, node):
-        pass
+        if node is None:
+            raise ValueError("cannot find successor of None")
+
+        if node.right is None:
+            return None
+        else:
+            current_node = node.right
+            while current_node.left is None:
+                current_node = current_node.left
+            return current_node
 
     def _predecessor(self, node):
-        pass
+        if node is None:
+            raise ValueError('Cannot find predecessor of None')
+
+        if node.left is None:
+            return None
+        else:
+            current_node = node.left
+            while current_node.right is not None:
+                current_node = current_node.right
+            return current_node
 
     def _in_order_traversal(self):
         pass
