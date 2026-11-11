@@ -180,7 +180,26 @@ class BinarySearchTree:
             yield (node.key, node.value)
 
 
+if __name__ == '__main__':
+    bst = BinarySearchTree()
 
+    bst.insert(10, 'hello')
+    bst.insert(5, 'hello')
+    bst.insert(22, 'hello')
+    bst.insert(2, 'hello')
+    bst.insert(9, 'hello')
+
+    bst.insert(12, 'hello')
+    bst.insert(30, 'hello')
+    bst.insert(11, 'hello')
+    bst.insert(15, 'hello')
+
+    bst.insert(30, 'hello')
+    bst.insert(23, 'hello')
+    bst.insert(35, 'hello')
+
+    for i in bst.traverse('inorder'):
+        print(i)
 
 #tree = BinarySearchTree()
 #for i in tree:
