@@ -13,6 +13,7 @@ class BinarySearchTree:
     def __init__(self):
         self.root = None
 
+    # O(n) worse case, O(log n) average case, O(h) always
     def __contains__(self, key):
         current_node = self.root
 
@@ -25,12 +26,15 @@ class BinarySearchTree:
                 return True
         return False
 
+    # O(n) linear time
     def __iter__(self):
-        pass
+        yield from self._in_order_traversal(self.root)
 
+    # O(n)
     def __repr__(self):
-        pass
+        return str(list(self._in_order_traversal(self.root)))
 
+    # O(n) worse case, O(log n) average case, O(h) always
     def insert(self, key, value):
         if self.root is None:
             self.root = Node(key)
@@ -58,6 +62,7 @@ class BinarySearchTree:
                     current_node.value = value
                     break
 
+    # O(n) worse case, O(log n) average case, O(h) always
     def search(self, key):
         current_node = self.root
 
@@ -75,6 +80,7 @@ class BinarySearchTree:
                 else:
                     current_node = current_node.right
 
+    # O(n) worse case, O(log n) average case, O(h) always
     def delete(self, key):
         node = self.search(key)
 
@@ -83,6 +89,7 @@ class BinarySearchTree:
 
         self._delete(node)
 
+    # O(n) linear time
     def traverse(self, order):
         if order == "inorder":
             yield from self._in_order_traversal(self.root)
