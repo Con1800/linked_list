@@ -84,7 +84,14 @@ class BinarySearchTree:
         self._delete(node)
 
     def traverse(self, order):
-        pass
+        if order == "inorder":
+            yield from self._in_order_traversal(self.root)
+        elif order == "preorder":
+            yield from self._post_order_traversal(self.root)
+        elif order == "postorder":
+            yield from self._post_order_traversal(self.root)
+        else:
+            raise ValueError("Unknown order")
 
     def _delete(self, node):
         # Node is leaf node
@@ -147,14 +154,24 @@ class BinarySearchTree:
                 current_node = current_node.right
             return current_node
 
-    def _in_order_traversal(self):
-        pass
+    def _in_order_traversal(self, node):
+        if node is not None:
+            yield from self._in_order_traversal(node.left)
+            yield (node.key, node.value)
+            yield from self._in_order_traversal(node.right)
 
-    def _pre_order_traversal(self):
-        pass
+    def _pre_order_traversal(self, node):
+        if node is not None:
+            yield (node.key, node.value)
+            yield from self._pre_order_traversal(node.left)
+            yield from self._pre_order_traversal(node.right)
 
-    def _post_order_traversal(self):
-        pass
+    def _post_order_traversal(self, node):
+        if node is not None:
+            yield from self._post_order_traversal(node.left)
+            yield from self._post_order_traversal(node.right)
+            yield (node.key, node.value)
+
 
 
 
