@@ -51,7 +51,7 @@ class BinarySearchTree:
                     else:
                         current_node = current_node.left
                 elif key > current_node.key:
-                    if current_node.right in None:
+                    if current_node.right is None:
                         current_node.right  = Node(key)
                         current_node.right.value = value
                         current_node.right.parent = current_node
@@ -94,7 +94,7 @@ class BinarySearchTree:
         if order == "inorder":
             yield from self._in_order_traversal(self.root)
         elif order == "preorder":
-            yield from self._post_order_traversal(self.root)
+            yield from self._pre_order_traversal(self.root)
         elif order == "postorder":
             yield from self._post_order_traversal(self.root)
         else:
@@ -198,7 +198,7 @@ if __name__ == '__main__':
     bst.insert(23, 'hello')
     bst.insert(35, 'hello')
 
-    for i in bst.traverse('inorder'):
+    for i in bst.traverse('postorder'):
         print(i)
 
 #tree = BinarySearchTree()
