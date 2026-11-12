@@ -73,7 +73,7 @@ class BinarySearchTree:
                 if current_node.left is None:
                     return None
                 else:
-                    current_node = current_node.node.left
+                    current_node = current_node.left
             else:
                 if current_node.right is None:
                     return None
@@ -132,7 +132,7 @@ class BinarySearchTree:
             node.key = successor.key
             node.value = successor.value
 
-            self.delete(successor)
+            self._delete(successor)
 
         # Node has one child
         # Node has two child
@@ -145,7 +145,7 @@ class BinarySearchTree:
             return None
         else:
             current_node = node.right
-            while current_node.left is None:
+            while current_node.left is not None:
                 current_node = current_node.left
             return current_node
 
@@ -197,9 +197,15 @@ if __name__ == '__main__':
     bst.insert(30, 'hello')
     bst.insert(23, 'hello')
     bst.insert(35, 'hello')
+    bst.insert(1, 'hello')
 
-    for i in bst.traverse('postorder'):
+    bst.delete(22)
+    for i in bst.traverse('preorder'):
         print(i)
+
+    print(bst)
+
+    print(bst.search(30))
 
 #tree = BinarySearchTree()
 #for i in tree:
