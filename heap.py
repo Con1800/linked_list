@@ -42,14 +42,14 @@ class MinHeap:
 
     # O(n) - linear time
     def meld(self, other_heap):
-        combined_heap = self.heap + other_heap
+        combined_heap = self.heap + other_heap.heap
         self.heapify(combined_heap)
 
         other_heap.heap = []
 
     # O(1) - constant time
     def _parent(self, index):
-        return (index + 1) // 2 if index != 0 else None
+        return (index - 1) // 2 if index != 0 else None
 
     # O(1) - constant time
     def _left(self, index):
@@ -92,3 +92,41 @@ class MinHeap:
 
             self.heap[index], self.heap[smallest] = self.heap[smallest], self.heap[index]
             index = smallest
+
+
+if __name__ == '__main__':
+    min_heap = MinHeap()
+    min_heap.heapify([[10, '10'], [9, '9'], [8, '8'], [7, '7'], [6, '6'], [5, '5'], [4, '4'], [3, '3'], [2, '2'], [1, '1']])
+    print(min_heap)
+
+    import heapq
+
+    mylist = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+    heapq.heapify(mylist)
+    print(mylist)
+
+
+    print(min_heap.extract_min())
+    print(min_heap.extract_min())
+    print(min_heap.extract_min())
+
+    print(heapq.heappop(mylist))
+    print(heapq.heappop(mylist))
+    print(heapq.heappop(mylist))
+
+    min_heap.insert(2, '2')
+    print(min_heap)
+
+    heapq.heappush(mylist, 2)
+    print(mylist)
+
+    min_heap2 = MinHeap()
+    min_heap2.heapify([
+        [5, '5'],
+        [4, '4'],
+        [3, '3'],
+        [2, '2'],
+        [1, '1']
+    ])
+    min_heap2.meld(min_heap2)
+    print(min_heap)

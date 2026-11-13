@@ -36,3 +36,12 @@ Imagine flipping a coin. You know that a coin has a 50% chance of landing on hea
 A Binary Search Tree is a hierarchical data structure that stores elements in an ordered manner. Each node contains a key and can have at most two children: a left child containing smaller keys and a right child containing larger keys. This structure allows searching, insertion, and deletion to operate in O(log n) time on average when the tree is reasonably balanced. However, an unbalanced BST can degrade to O(n) time complexity. BSTs also support different traversal techniques, such as in-order, pre-order, and post-order traversal.
 
 A Binary Search Tree is like organizing numbers in a family tree. Every number has a place, and the rule is that smaller numbers go to the left while bigger numbers go to the right. This makes finding, adding, and removing numbers easier because you don't need to check every number one by one. However, if the tree becomes unbalanced, finding numbers can become slower.
+
+
+
+# Conclusion: Heap (Data Structure)
+
+A Heap is a tree-based data structure, typically implemented using an array, that maintains a specific ordering property. A Min Heap ensures that every parent node is smaller than or equal to its children, keeping the minimum element at the root. Its main advantage is efficient insertion and removal of the minimum element, both taking O(log n) time, while accessing the minimum takes O(1). Heaps are commonly used to implement priority queues and are useful in scheduling, graph algorithms, and other applications that require efficient priority-based processing.
+
+
+A Heap is like a pyramid where the smallest number stays at the top. Whenever you add a new number, it moves upward if it's smaller than its parent. Whenever you remove the smallest number, another number takes its place and moves down until everything is organized again. This makes it easy to find the smallest number without sorting everything.
