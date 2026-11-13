@@ -8,15 +8,18 @@ class MinHeap:
     def __repr__(self):
         return str(self.heap)
 
+    # O(lon n)
     def insert(self, key, value):
         self.heap.append((key, value))
         self._sift_up(len(self.heap) -1 )
 
+    # O(1) - constant time
     def peek_min(self):
         if not self.heap:
             raise IndexError('Empty heap')
         return self.heap[0]
 
+    # O(log n)
     def extract_min(self):
         if not self.heap:
             raise IndexError('Empty heap')
@@ -30,29 +33,35 @@ class MinHeap:
 
         return min_element
 
+    # O(n) - linear time
     def heapify(self, elements):
         self.heap = list(elements)
 
         for i in reversed(range(self._parent(len(self.heap) - 1) +1 )):
             self._sift_down(i)
 
+    # O(n) - linear time
     def meld(self, other_heap):
         combined_heap = self.heap + other_heap
         self.heapify(combined_heap)
 
         other_heap.heap = []
 
+    # O(1) - constant time
     def _parent(self, index):
         return (index + 1) // 2 if index != 0 else None
 
+    # O(1) - constant time
     def _left(self, index):
         left = 2 * index + 1
         return left if left < len(self.heap) else None
 
+    # O(1) - constant time
     def _right(self, index):
         right = 2 * index + 2
         return right if right < len(self.heap) else None
 
+    # O(log n)
     def _sift_up(self, index):
         # swim
         parent_index = self._parent(index)
@@ -62,6 +71,7 @@ class MinHeap:
             index = parent_index
             parent_index = self._parent(index)
 
+    # O(log n)
     def _sift_down(self, index):
         # sink
         while True:
