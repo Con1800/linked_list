@@ -45,3 +45,12 @@ A Heap is a tree-based data structure, typically implemented using an array, tha
 
 
 A Heap is like a pyramid where the smallest number stays at the top. Whenever you add a new number, it moves upward if it's smaller than its parent. Whenever you remove the smallest number, another number takes its place and moves down until everything is organized again. This makes it easy to find the smallest number without sorting everything.
+
+
+
+# Conclusion: Trie (Data Structure)
+
+A Trie is a tree-based data structure that stores strings by organizing their characters into nodes. Each node contains references to its child nodes and a Boolean indicating whether a complete word ends at that node. It supports efficient insertion, searching, deletion, and prefix-based retrieval. Its main advantage is that operations such as insertion and searching depend on the length of the input string rather than the total number of stored words.
+
+
+A Trie is like a tree made of letters. Instead of storing entire words separately, it connects letters together to build words. When someone types a few letters, the Trie follows those letters and finds all the words that start with them. It's useful for autocomplete, search suggestions, spell checkers, and other applications where we need to find words quickly.

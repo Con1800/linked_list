@@ -9,17 +9,19 @@ class Trie:
     def __init__(self):
         self.root = Node()
 
+    # O(m) - where m is the length of the word
     def insert(self, word):
         current_node = self.root
 
         for c in word:
-            if c in current_node.children:
+            if c not in current_node.children:
                 current_node.children[c] = Node()
 
             current_node = current_node.children[c]
 
         current_node.is_end_of_word = True
 
+    # O(m) - where m is the length of the word
     def search(self, word):
         current_node = self.root
 
@@ -31,9 +33,11 @@ class Trie:
 
         return current_node.is_end_of_word
 
+    # O(m) - where m is the length of the word
     def delete(self, word):
         self._delete(self.root, word, 0)
 
+    # O(m) - where m is the length of the word
     def hash_prefix(self, prefix):
         current_node = self.root
 
@@ -45,6 +49,7 @@ class Trie:
 
         return True
 
+    # O(m) - where m is the prefix length and k is the total number of character in all suffixes
     def starts_with(self, prefix):
         words = []
         current_node = self.root
@@ -66,6 +71,7 @@ class Trie:
 
         return words
 
+    # O(n) - n is the number of nodes in the trie
     def list_words(self):
         words = []
 
@@ -100,5 +106,29 @@ class Trie:
             return len(current_node.children) == 0 and not current_node.is_end_of_word
 
         return False
-        
+
+if __name__ == '__main__':
+    trie = Trie()
+
+    trie.insert('hello')
+    trie.insert('henry')
+    trie.insert('mike')
+    trie.insert('minimal')
+    trie.insert('minimum')
+
+    print(trie.list_words())
+    print(trie.hash_prefix("mi"))
+    print(trie.starts_with('mi'))
+
+    trie.delete('minimal')
+
+    print(trie.starts_with('mi'))
+
+    print(trie.search('minimum'))
+    print(trie.search('minimal'))
+    print(trie.search('mini'))
+
+    trie.insert('mini')
+
+    print(trie.starts_with('mi'))
 
