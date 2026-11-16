@@ -17,31 +17,87 @@ class Graph:
             raise ValueError("Node exists already")
 
     def remove_node(self, node):
-        pass
+        if node not in self.adj_list:
+            raise ValueError("Node does not Exist")
+        
+        for neighbors in self.adj_list.values():
+            neighbors.discard(node)
+
+        del self.adj_list[node]
 
     def add_edge(self, from_node, to_node, weight=None):
-        pass
+        if from_node not in self.adj_list:
+            self.add_node(from_node)
 
-    def remove(self, from_node, to_node):
-        pass
+        if to_node not in self.adj_list:
+            self.add_node(to_node)
+
+        if weight is None:
+            self.adj_list[from_node].add(to_node)
+            if not self.directed:
+                self.adj_list[to_node].add(from_node)
+
+        else:
+            self.adj_list[from_node].add((to_node, weight))
+            if not self.directed:
+                self.adj_list[to_node].add((from_node, weight))
+
+    def remove_edge(self, from_node, to_node):
+        if from_node in self.adj_list:
+            if to_node in self.adj_list[from_node]:
+                self.adj_list[from_node].remove(to_node)
+            else:
+                raise ValueError('Edge does not exist')
+
+            if not self.directed:
+                if from_node in self.adj_list[to_node]:
+                    self.adj_list[to_node].remove(from_node)
+
+        else:
+            raise ValueError('Edge does not exist')
+
 
     def get_neighbors(self, node):
-        pass
+        return self.adj_list.get(node, set())
 
     def has_node(self, node):
-        pass
+        return node in self.adj_list
 
     def has_edge(self, from_node, to_node):
-        pass
-
+        if from_node in self.adj_list:
+            return to_node in self.adj_list[from_node]
+        return False
+    
+    
     def get_nodes(self):
-        pass
+        return list(self.adj_list.keys())
 
     def get_egdes(self):
-        pass
+        edges = []
+        for from_node, neighbors in self.adj_list.items():
+            for to_node in neighbors:
+                edges.append((from_node, to_node))
+
 
     def bfs(self, start):
-        pass
+        visited = set()
+        queue = [start]
+        order = []
 
+        while queue:
+            node = queue.pop(0)
+            if node not in visited:
+                visited.add(node)
+                order.append(order)
+                neighbors = self.get_neighbors(node)
+                for neighbor in neighbors:
+                    if isinstance in neighbors:
+                        neighbor = neighbor[0]
+                    if neighbor not in visited:
+                        queue.append(neighbor)
+
+        return order
+
+                        
     def dfs(self, start):
         pass
