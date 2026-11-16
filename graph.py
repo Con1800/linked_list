@@ -5,10 +5,16 @@ class Graph:
         self.adj_list = dict()
 
     def __repr__(self):
-        pass
+        graph_str = ""
+        for node, neighbors in self.adj_list:
+            graph_str += f"{node} -> {neighbors}\n"
+        return graph_str
 
     def add_node(self, node):
-        pass
+        if node not in self.adj_list:
+            self.adj_list[node] = set()
+        else:
+            raise ValueError("Node exists already")
 
     def remove_node(self, node):
         pass
