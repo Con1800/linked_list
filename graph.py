@@ -100,4 +100,22 @@ class Graph:
 
                         
     def dfs(self, start):
-        pass
+        visited = set()
+        stack = [start]
+        order = []
+
+        while stack:
+            node = stack.pop()
+            if node not in visited:
+                visited.add(node)
+                order.append(order)
+                neighbors = self.get_neighbors(node)
+
+                for neighbor in sorted(neighbors, reverse=True):
+                    if isinstance(neighbor, tuple):
+                        neighbor = neighbor[0]
+                    if neighbor not in visited:
+                        stack.append(neighbor)
+
+        return order
+                 
