@@ -54,3 +54,10 @@ A Trie is a tree-based data structure that stores strings by organizing their ch
 
 
 A Trie is like a tree made of letters. Instead of storing entire words separately, it connects letters together to build words. When someone types a few letters, the Trie follows those letters and finds all the words that start with them. It's useful for autocomplete, search suggestions, spell checkers, and other applications where we need to find words quickly.
+
+
+# Conclusion: Graph (Data Structure)
+
+A Graph is a non-linear data structure consisting of vertices and edges that represent relationships between objects. It can be represented using an adjacency list or adjacency matrix. Graph traversal algorithms such as Breadth-First Search (BFS) and Depth-First Search (DFS) are used to explore vertices, while Dijkstra's algorithm finds the shortest distances in a weighted graph. These algorithms are widely used in navigation systems, social networks, computer networks, and recommendation systems.
+
+A Graph is like a map containing different places connected by roads. The places are called nodes, and the roads are called edges. Some roads have distances or costs called weights. BFS helps us explore nearby places first, DFS explores one road as far as possible before going back, and Dijkstra helps us find the shortest route to our destination. Graphs are useful for things like Google Maps, social media, and connecting computers.
